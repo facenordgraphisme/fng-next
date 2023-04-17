@@ -250,6 +250,12 @@
   }
 }
 
+.link:hover {
+  background-color: #FFC107; /* couleur de fond au survol */
+  color: white; /* couleur du texte au survol */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; /* transition fluide */
+}
+
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid {

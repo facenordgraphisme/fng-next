@@ -1,5 +1,17 @@
 import React from "react";
 import { motion } from "framer-motion";
+//FONT
+import { Pacifico, Playfair_Display } from "next/font/google";
+
+const pacifico = Pacifico({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-paci",
+});
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-play",
+});
 
 const quote = {
   initial: {
@@ -22,19 +34,20 @@ const singleWord = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 1,
+      duration: 1.5,
     },
   },
 };
 
 const AnimatedText = ({ text, className = "" }) => {
   return (
-    <div className="w-full mx-auto py-2 flex items-center justify-center text-center overflow-hidden">
+    <div className="w-full mx-auto py-2 flex items-center justify-center text-center overflow-hidden sm:py-0 ">
       <motion.h1
-        className={`inline-block w-full text-dark font-bold capitalize text-8xl ${className}`}
+        className={`${playfair.variable} font-play inline-block w-full text-dark font-bold text-8xl dark:text-light ${className}`}
         variants={quote}
         initial="initial"
         animate="animate"
+        delay="3"
       >
         {text.split(" ").map((word, index) => (
           <motion.span

@@ -1,15 +1,18 @@
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 import "@/styles/globals.css";
-import { Montserrat } from "next/font/google";
+import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { Mulish } from "next/font/google";
 
-const montserrat = Montserrat({
+const mulish = Mulish({
   subsets: ["latin"],
-  variable: "--font-mont",
+  variable: "--font-muli",
 });
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -17,10 +20,12 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main
-        className={`${montserrat.variable} font-mont bg-light w-full min-h-screen`}
+        className={`${mulish.variable} font-muli bg-light dark:bg-dark w-full min-h-screen`}
       >
         <NavBar />
-        <Component {...pageProps} />
+        <AnimatePresence mode="wait">
+          <Component key={router.asPath} {...pageProps} />
+        </AnimatePresence>
         <Footer />
       </main>
     </>
