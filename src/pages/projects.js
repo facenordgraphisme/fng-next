@@ -7,15 +7,16 @@ import Link from "next/link";
 import React from "react";
 import project1 from "../../public/images/projects/crypto-screener-cover-image.jpg";
 import project2 from "../../public/images/projects/patoch.jpg";
+import ash from "../../public/images/projects/ash.jpg";
 import { motion } from "framer-motion";
 import TransitionEffect from "@/components/TransitionEffect";
+import bg from "../../public/images/bg/bg1.jpg";
 
 const FramerImage = motion(Image);
 
 const FeaturedProject = ({ type, title, summary, img, link, github }) => {
   return (
-    <article className="w-full flex items-center justify-between relative rounded-br-2xl rounded-3xl border border-solid border-dark bg-light shadow-2xl p-12 dark:bg-dark dark:border-light lg:flex-col lg:p-8 xs:rounded-2xl xs:rounded-br-3xl xs:p-4">
-      <div className="absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2.5rem] bg-dark dark:bg-light rounded-br-3xl xs:right-2 sm:h-[102%] xs:w-full xs:rounded-[1.5rem]" />
+    <article className="w-full flex items-center justify-between relative rounded-br-2xl rounded-3xl border border-solid border-dark bg-light/60 shadow-2xl p-12 dark:bg-dark dark:border-light lg:flex-col lg:p-8 xs:rounded-2xl xs:rounded-br-3xl xs:p-4">
       <Link
         href={link}
         target="_blank"
@@ -69,8 +70,7 @@ const FeaturedProject = ({ type, title, summary, img, link, github }) => {
 
 const Project = ({ title, type, img, link, github }) => {
   return (
-    <article className="w-full flex flex-col items-center justify-center rounded-2xl border border-solid border-dark bg-light p-6 relative dark:bg-dark dark:border-light xs:p-4">
-      <div className="absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2rem] bg-dark rounded-br-3xl dark:bg-light md:-right-2 md:w-[101%] xs:h-[102%] xs:rounded-[1.5rem]" />
+    <article className="w-full flex flex-col items-center justify-center rounded-2xl border border-solid border-dark bg-light/60 p-6 relative dark:bg-dark dark:border-light xs:p-4">
       <Link
         href={link}
         target="_blank"
@@ -122,10 +122,18 @@ const projects = () => {
         <title>Face Nord Graphisme | Porfolio</title>
         <meta name="description" content="ICI TU RENTRE LE SEO" />
       </Head>
+      <div className="fixed top-0 w-full h-full">
+        <Image
+          src={bg}
+          alt="casseCouilles"
+          className="w-full h-full object-cover"
+          priority
+        />
+      </div>
       <motion.main
         initial={{ opacity: 0, x: "80%" }}
         animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: "-80%" }}
+        exit={{ opacity: 0, y: "80%" }}
         transition={{
           ease: "linear",
           duration: 2,
@@ -144,39 +152,36 @@ const projects = () => {
               <FeaturedProject
                 title="Restaurant Gaudineto"
                 img={project1}
-                summary="A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. 
-            It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your 
-            local currency."
+                summary="Création du site web du restaurant Gaudineto situé à Moustiers-Sainte-Marie"
                 link="https://www.gaudineto.fr"
-                github="/"
-                type="Featured Project"
+                github="https://www.gaudineto.fr"
+                type="Site Internet"
+                rel="noopener noreferrer"
               />
             </div>
             <div className="col-span-6 sm:col-span-12">
               <Project
-                title="Patiss et Cuisine"
+                title="ASH Rédaction Web"
+                img={ash}
+                summary="Création du site web d'une talentueuse rédactrice web Freelance."
+                link="/"
+                github="https://github.com/facenordgraphisme/AnneSoIndustry"
+                type="Site Vitrine"
+              />
+            </div>
+            <div className="col-span-6 sm:col-span-12">
+              <Project
+                title="Patiss & Cuisine"
                 img={project2}
                 summary="A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. 
             It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your 
             local currency."
-                link="/"
-                github="/"
-                type="Featured Project"
+                link="https://www.patissetcuisine.fr"
+                github="https://www.patissetcuisine.fr"
+                type="Site Internet"
               />
             </div>
-            <div className="col-span-6 sm:col-span-12">
-              <Project
-                title="Crypto Screener Application"
-                img={project1}
-                summary="A feature-rich Crypto Screener App using React, Tailwind CSS, Context API, React Router and Recharts. 
-            It shows detail regarding almost all the cryptocurrency. You can easily convert the price in your 
-            local currency."
-                link="/"
-                github="/"
-                type="Featured Project"
-              />
-            </div>
-            <div className="col-span-12">
+            {/* <div className="col-span-12">
               <FeaturedProject
                 title="Crypto Screener Application"
                 img={project1}
@@ -211,7 +216,7 @@ const projects = () => {
                 github="/"
                 type="Featured Project"
               />
-            </div>
+            </div> */}
           </div>
         </Layout>
       </motion.main>
